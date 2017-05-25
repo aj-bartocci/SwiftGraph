@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		210E8C631ED645AF001F1367 /* GraphItemInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E8C621ED645AF001F1367 /* GraphItemInterface.swift */; };
 		210E8C691ED6521B001F1367 /* GraphViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E8C681ED6521B001F1367 /* GraphViewTests.swift */; };
 		210E8C6B1ED652BC001F1367 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E8C6A1ED652BC001F1367 /* GraphView.swift */; };
+		217E43681ED7125C00C0A9A9 /* GraphItemInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217E43671ED7125C00C0A9A9 /* GraphItemInterface.swift */; };
 		21D159621EB94877002690D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D159611EB94877002690D4 /* AppDelegate.swift */; };
 		21D159641EB94877002690D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D159631EB94877002690D4 /* ViewController.swift */; };
 		21D159671EB94877002690D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D159651EB94877002690D4 /* Main.storyboard */; };
@@ -40,9 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		210E8C621ED645AF001F1367 /* GraphItemInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphItemInterface.swift; sourceTree = "<group>"; };
 		210E8C681ED6521B001F1367 /* GraphViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewTests.swift; sourceTree = "<group>"; };
 		210E8C6A1ED652BC001F1367 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		217E43671ED7125C00C0A9A9 /* GraphItemInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphItemInterface.swift; sourceTree = "<group>"; };
 		21D1595E1EB94877002690D4 /* SwiftGraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D159611EB94877002690D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21D159631EB94877002690D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +89,6 @@
 		21D159551EB94877002690D4 = {
 			isa = PBXGroup;
 			children = (
-				210E8C621ED645AF001F1367 /* GraphItemInterface.swift */,
 				21D159601EB94877002690D4 /* SwiftGraph */,
 				21D159751EB94877002690D4 /* SwiftGraphTests */,
 				21D159801EB94877002690D4 /* SwiftGraphUITests */,
@@ -110,6 +109,7 @@
 		21D159601EB94877002690D4 /* SwiftGraph */ = {
 			isa = PBXGroup;
 			children = (
+				217E43671ED7125C00C0A9A9 /* GraphItemInterface.swift */,
 				21D159611EB94877002690D4 /* AppDelegate.swift */,
 				21D159631EB94877002690D4 /* ViewController.swift */,
 				21D159991EB94BE2002690D4 /* GraphItem.swift */,
@@ -282,10 +282,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				21D159641EB94877002690D4 /* ViewController.swift in Sources */,
+				217E43681ED7125C00C0A9A9 /* GraphItemInterface.swift in Sources */,
 				21D159621EB94877002690D4 /* AppDelegate.swift in Sources */,
 				21D159961EB94A20002690D4 /* GraphManager.swift in Sources */,
 				21D1599A1EB94BE2002690D4 /* GraphItem.swift in Sources */,
-				210E8C631ED645AF001F1367 /* GraphItemInterface.swift in Sources */,
 				210E8C6B1ED652BC001F1367 /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
