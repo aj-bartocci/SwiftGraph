@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WLw-k4-Efb">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="SwiftGraph" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,112 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVH-b9-b1c" customClass="GraphView" customModule="SwiftGraph" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="63" width="375" height="151"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="151" id="ZQE-aC-6Fy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yVH-b9-b1c" secondAttribute="trailing" id="PSN-OH-gcn"/>
+                            <constraint firstItem="yVH-b9-b1c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dSd-vI-NOe"/>
+                            <constraint firstItem="yVH-b9-b1c" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="43" id="yJT-OY-8tw"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="graphView" destination="yVH-b9-b1c" id="g96-Mm-gnw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+        <!--Graph View Controller-->
+        <scene sceneID="f1U-at-FEX">
+            <objects>
+                <viewController storyboardIdentifier="GraphViewController" id="WLw-k4-Efb" customClass="GraphViewController" customModule="SwiftGraph" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Jc-JU-BfU"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Ua-tc-hgd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cVQ-Le-LfD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j75-Tr-nxG" customClass="InteractiveGraphView" customModule="SwiftGraph" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="118" width="375" height="271"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BVD-EH-IXz" customClass="GraphView" customModule="SwiftGraph" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="40" width="375" height="128"/>
+                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="ccb-Ix-23Z"/>
+                                        </constraints>
+                                    </view>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jMg-6X-OXQ">
+                                        <rect key="frame" x="-2" y="168" width="379" height="31"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="minimumTrackTintColor" red="0.75294119120000003" green="0.79215687509999999" blue="0.87058824300000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="maximumTrackTintColor" red="0.75294119120000003" green="0.79215687509999999" blue="0.87058824300000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="handleSlideEventWithSender:" destination="j75-Tr-nxG" eventType="valueChanged" id="Vjl-wP-SsM"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGB-28-WrD">
+                                        <rect key="frame" x="10" y="8" width="355" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ZGB-28-WrD" firstAttribute="leading" secondItem="j75-Tr-nxG" secondAttribute="leading" constant="10" id="Dic-PC-lxj"/>
+                                    <constraint firstAttribute="trailing" secondItem="jMg-6X-OXQ" secondAttribute="trailing" id="EUn-40-GTR"/>
+                                    <constraint firstItem="BVD-EH-IXz" firstAttribute="leading" secondItem="j75-Tr-nxG" secondAttribute="leading" id="FxQ-74-Y8S"/>
+                                    <constraint firstItem="jMg-6X-OXQ" firstAttribute="leading" secondItem="j75-Tr-nxG" secondAttribute="leading" id="NEQ-l3-qZA"/>
+                                    <constraint firstAttribute="height" constant="271" id="Omb-gz-Nby"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZGB-28-WrD" secondAttribute="trailing" constant="10" id="YYs-zM-sUi"/>
+                                    <constraint firstItem="jMg-6X-OXQ" firstAttribute="top" secondItem="BVD-EH-IXz" secondAttribute="bottom" id="Zvw-W9-ole"/>
+                                    <constraint firstAttribute="trailing" secondItem="BVD-EH-IXz" secondAttribute="trailing" id="gBd-7N-gpS"/>
+                                    <constraint firstItem="ZGB-28-WrD" firstAttribute="top" secondItem="j75-Tr-nxG" secondAttribute="top" constant="8" id="gmO-dQ-ngW"/>
+                                    <constraint firstItem="BVD-EH-IXz" firstAttribute="top" secondItem="j75-Tr-nxG" secondAttribute="top" constant="40" id="ioa-vp-Mor"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="graph" destination="BVD-EH-IXz" id="msl-M2-Ljs"/>
+                                    <outlet property="graphSlider" destination="jMg-6X-OXQ" id="D2M-Sn-WgU"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhJ-Mi-NA6">
+                                <rect key="frame" x="26" y="96" width="323" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="j75-Tr-nxG" firstAttribute="leading" secondItem="cVQ-Le-LfD" secondAttribute="leading" id="1YM-vV-c3D"/>
+                            <constraint firstItem="j75-Tr-nxG" firstAttribute="top" secondItem="8Jc-JU-BfU" secondAttribute="bottom" constant="98" id="1g5-Hr-4Z9"/>
+                            <constraint firstAttribute="trailing" secondItem="j75-Tr-nxG" secondAttribute="trailing" id="cB5-kN-mYn"/>
+                            <constraint firstItem="j75-Tr-nxG" firstAttribute="top" secondItem="OhJ-Mi-NA6" secondAttribute="bottom" constant="1" id="klM-Nx-eHv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OhJ-Mi-NA6" secondAttribute="trailing" constant="10" id="mCa-yP-JwP"/>
+                            <constraint firstItem="OhJ-Mi-NA6" firstAttribute="leading" secondItem="cVQ-Le-LfD" secondAttribute="leadingMargin" constant="10" id="p6f-UC-VgO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptorLabel" destination="OhJ-Mi-NA6" id="6fZ-73-jkv"/>
+                        <outlet property="graphView" destination="j75-Tr-nxG" id="EgI-wr-jZj"/>
+                        <outlet property="valueLabel" destination="ZGB-28-WrD" id="2gV-xm-QcV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AR0-Yw-SrU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="834.33283358320841"/>
         </scene>
     </scenes>
 </document>
