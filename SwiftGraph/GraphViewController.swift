@@ -31,7 +31,7 @@ class GraphViewController: UIViewController {
         let item7 = GraphItem(value: 78, descriptor: "June 7, 2017")
         let item8 = GraphItem(value: 94.7, descriptor: "June 8, 2017")
         
-        graphDataSource.setItems([item1, item2, item3, item4, item5, item6, item7, item8, item1, item2, item3, item4, item5, item6, item7, item8, item1, item2, item3, item4, item5, item6, item7, item8, item1, item2, item3, item4, item5, item6, item7, item8, item1, item2, item3, item4, item5, item6, item7, item8, item1, item2, item3, item4, item5, item6, item7, item8, item1, item2, item3, item4, item5, item6, item7, item8, item1, item2, item3, item4, item5, item6, item7, item8])
+        graphDataSource.setItems([item1, item2, item3, item4, item5, item6, item7, item8])
         graphView.delegate = self
         graphView.reloadData()
     }

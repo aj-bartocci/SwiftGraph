@@ -12,6 +12,8 @@
 		1D6019931ED74116003067E2 /* InteractiveGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6019921ED74116003067E2 /* InteractiveGraphView.swift */; };
 		1D60199B1ED75AB4003067E2 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60199A1ED75AB4003067E2 /* GraphViewController.swift */; };
 		1DD895E51ED7614200DE9C1B /* GraphViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD895E41ED7614200DE9C1B /* GraphViewControllerTests.swift */; };
+		1DD895E71ED7846900DE9C1B /* CustomSliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD895E61ED7846900DE9C1B /* CustomSliderTests.swift */; };
+		1DD895E91ED784BB00DE9C1B /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD895E81ED784BB00DE9C1B /* CustomSlider.swift */; };
 		210E8C691ED6521B001F1367 /* GraphViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E8C681ED6521B001F1367 /* GraphViewTests.swift */; };
 		210E8C6B1ED652BC001F1367 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E8C6A1ED652BC001F1367 /* GraphView.swift */; };
 		217E43681ED7125C00C0A9A9 /* GraphItemInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217E43671ED7125C00C0A9A9 /* GraphItemInterface.swift */; };
@@ -50,6 +52,8 @@
 		1D6019921ED74116003067E2 /* InteractiveGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveGraphView.swift; sourceTree = "<group>"; };
 		1D60199A1ED75AB4003067E2 /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		1DD895E41ED7614200DE9C1B /* GraphViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphViewControllerTests.swift; path = ../GraphViewControllerTests.swift; sourceTree = "<group>"; };
+		1DD895E61ED7846900DE9C1B /* CustomSliderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderTests.swift; sourceTree = "<group>"; };
+		1DD895E81ED784BB00DE9C1B /* CustomSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		210E8C681ED6521B001F1367 /* GraphViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewTests.swift; sourceTree = "<group>"; };
 		210E8C6A1ED652BC001F1367 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		217E43671ED7125C00C0A9A9 /* GraphItemInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphItemInterface.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				21D1596A1EB94877002690D4 /* LaunchScreen.storyboard */,
 				21D1596D1EB94877002690D4 /* Info.plist */,
 				1D6019921ED74116003067E2 /* InteractiveGraphView.swift */,
+				1DD895E81ED784BB00DE9C1B /* CustomSlider.swift */,
 			);
 			path = SwiftGraph;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 				21D159971EB94B98002690D4 /* GraphItemTests.swift */,
 				1D60198E1ED73B4B003067E2 /* ViewControllerTests.swift */,
 				1DD895E41ED7614200DE9C1B /* GraphViewControllerTests.swift */,
+				1DD895E61ED7846900DE9C1B /* CustomSliderTests.swift */,
 			);
 			path = SwiftGraphTests;
 			sourceTree = "<group>";
@@ -297,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21D159641EB94877002690D4 /* ViewController.swift in Sources */,
+				1DD895E91ED784BB00DE9C1B /* CustomSlider.swift in Sources */,
 				1D6019931ED74116003067E2 /* InteractiveGraphView.swift in Sources */,
 				217E43681ED7125C00C0A9A9 /* GraphItemInterface.swift in Sources */,
 				21D159621EB94877002690D4 /* AppDelegate.swift in Sources */,
@@ -313,6 +320,7 @@
 			files = (
 				210E8C691ED6521B001F1367 /* GraphViewTests.swift in Sources */,
 				21D159941EB949E9002690D4 /* GraphManagerTests.swift in Sources */,
+				1DD895E71ED7846900DE9C1B /* CustomSliderTests.swift in Sources */,
 				1D60198F1ED73B4B003067E2 /* ViewControllerTests.swift in Sources */,
 				21D159981EB94B98002690D4 /* GraphItemTests.swift in Sources */,
 				1D6019911ED7405F003067E2 /* InteractiveGraphViewTests.swift in Sources */,

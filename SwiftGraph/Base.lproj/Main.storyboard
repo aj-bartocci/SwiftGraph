@@ -107,12 +107,39 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2G-DC-5kS" customClass="CustomSlider" customModule="SwiftGraph" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="425" width="375" height="39"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="MX2-H5-gGf"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineTint">
+                                        <color key="value" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineSize">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="handleShadowSize">
+                                        <size key="value" width="2" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="handleTint">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="handleShadowTint">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="j75-Tr-nxG" firstAttribute="leading" secondItem="cVQ-Le-LfD" secondAttribute="leading" id="1YM-vV-c3D"/>
                             <constraint firstItem="j75-Tr-nxG" firstAttribute="top" secondItem="8Jc-JU-BfU" secondAttribute="bottom" constant="98" id="1g5-Hr-4Z9"/>
+                            <constraint firstAttribute="trailing" secondItem="x2G-DC-5kS" secondAttribute="trailing" id="RQr-xJ-84l"/>
+                            <constraint firstItem="x2G-DC-5kS" firstAttribute="top" secondItem="j75-Tr-nxG" secondAttribute="bottom" constant="36" id="U82-TW-1J6"/>
                             <constraint firstAttribute="trailing" secondItem="j75-Tr-nxG" secondAttribute="trailing" id="cB5-kN-mYn"/>
+                            <constraint firstItem="x2G-DC-5kS" firstAttribute="leading" secondItem="cVQ-Le-LfD" secondAttribute="leading" id="gIH-FI-iWx"/>
                             <constraint firstItem="j75-Tr-nxG" firstAttribute="top" secondItem="OhJ-Mi-NA6" secondAttribute="bottom" constant="1" id="klM-Nx-eHv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OhJ-Mi-NA6" secondAttribute="trailing" constant="10" id="mCa-yP-JwP"/>
                             <constraint firstItem="OhJ-Mi-NA6" firstAttribute="leading" secondItem="cVQ-Le-LfD" secondAttribute="leadingMargin" constant="10" id="p6f-UC-VgO"/>
