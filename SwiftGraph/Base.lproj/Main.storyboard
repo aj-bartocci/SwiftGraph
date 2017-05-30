@@ -61,44 +61,76 @@
                                 <rect key="frame" x="0.0" y="118" width="375" height="271"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BVD-EH-IXz" customClass="GraphView" customModule="SwiftGraph" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="40" width="375" height="128"/>
+                                        <rect key="frame" x="30" y="40" width="315" height="128"/>
                                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="ccb-Ix-23Z"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jMg-6X-OXQ">
-                                        <rect key="frame" x="-2" y="168" width="379" height="31"/>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="minimumTrackTintColor" red="0.75294119120000003" green="0.79215687509999999" blue="0.87058824300000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="maximumTrackTintColor" red="0.75294119120000003" green="0.79215687509999999" blue="0.87058824300000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="handleSlideEventWithSender:" destination="j75-Tr-nxG" eventType="valueChanged" id="Vjl-wP-SsM"/>
-                                        </connections>
-                                    </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGB-28-WrD">
                                         <rect key="frame" x="10" y="8" width="355" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2G-DC-5kS" customClass="CustomSlider" customModule="SwiftGraph" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="168" width="335" height="39"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39" id="MX2-H5-gGf"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lineTint">
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineSize">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="handleTint">
+                                                <color key="value" red="0.42352941179999998" green="0.52941176469999995" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="handleShadowTint">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="handleShadowSize">
+                                                <size key="value" width="0.0" height="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="handleSize">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="handleCustSlideEventWithSender:" destination="j75-Tr-nxG" eventType="valueChanged" id="bZ2-vk-8Sf"/>
+                                        </connections>
+                                    </view>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="AUn-ee-DO3">
+                                        <rect key="frame" x="-2" y="207" width="379" height="31"/>
+                                    </slider>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="BVD-EH-IXz" firstAttribute="trailing" secondItem="x2G-DC-5kS" secondAttribute="trailing" constant="-10" id="09j-hJ-wXx"/>
+                                    <constraint firstItem="x2G-DC-5kS" firstAttribute="top" secondItem="BVD-EH-IXz" secondAttribute="bottom" id="9Mz-YA-heX"/>
                                     <constraint firstItem="ZGB-28-WrD" firstAttribute="leading" secondItem="j75-Tr-nxG" secondAttribute="leading" constant="10" id="Dic-PC-lxj"/>
-                                    <constraint firstAttribute="trailing" secondItem="jMg-6X-OXQ" secondAttribute="trailing" id="EUn-40-GTR"/>
-                                    <constraint firstItem="BVD-EH-IXz" firstAttribute="leading" secondItem="j75-Tr-nxG" secondAttribute="leading" id="FxQ-74-Y8S"/>
-                                    <constraint firstItem="jMg-6X-OXQ" firstAttribute="leading" secondItem="j75-Tr-nxG" secondAttribute="leading" id="NEQ-l3-qZA"/>
+                                    <constraint firstItem="x2G-DC-5kS" firstAttribute="leading" secondItem="j75-Tr-nxG" secondAttribute="leading" constant="20" id="Gti-UZ-7AU"/>
+                                    <constraint firstAttribute="trailing" secondItem="x2G-DC-5kS" secondAttribute="trailing" constant="20" id="Kex-Ky-Nbt"/>
+                                    <constraint firstItem="AUn-ee-DO3" firstAttribute="top" secondItem="x2G-DC-5kS" secondAttribute="bottom" id="MHC-mC-VEY"/>
                                     <constraint firstAttribute="height" constant="271" id="Omb-gz-Nby"/>
+                                    <constraint firstItem="BVD-EH-IXz" firstAttribute="leading" secondItem="x2G-DC-5kS" secondAttribute="leading" constant="10" id="Tqh-aS-jd0"/>
                                     <constraint firstAttribute="trailing" secondItem="ZGB-28-WrD" secondAttribute="trailing" constant="10" id="YYs-zM-sUi"/>
-                                    <constraint firstItem="jMg-6X-OXQ" firstAttribute="top" secondItem="BVD-EH-IXz" secondAttribute="bottom" id="Zvw-W9-ole"/>
-                                    <constraint firstAttribute="trailing" secondItem="BVD-EH-IXz" secondAttribute="trailing" id="gBd-7N-gpS"/>
                                     <constraint firstItem="ZGB-28-WrD" firstAttribute="top" secondItem="j75-Tr-nxG" secondAttribute="top" constant="8" id="gmO-dQ-ngW"/>
                                     <constraint firstItem="BVD-EH-IXz" firstAttribute="top" secondItem="j75-Tr-nxG" secondAttribute="top" constant="40" id="ioa-vp-Mor"/>
+                                    <constraint firstItem="AUn-ee-DO3" firstAttribute="leading" secondItem="j75-Tr-nxG" secondAttribute="leading" id="tLk-Zq-IXR"/>
+                                    <constraint firstAttribute="trailing" secondItem="AUn-ee-DO3" secondAttribute="trailing" id="uqg-QF-ZLb"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="custSlider" destination="x2G-DC-5kS" id="UVN-9a-Gxp"/>
                                     <outlet property="graph" destination="BVD-EH-IXz" id="msl-M2-Ljs"/>
-                                    <outlet property="graphSlider" destination="jMg-6X-OXQ" id="D2M-Sn-WgU"/>
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhJ-Mi-NA6">
@@ -107,39 +139,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2G-DC-5kS" customClass="CustomSlider" customModule="SwiftGraph" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="425" width="375" height="39"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="MX2-H5-gGf"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="lineTint">
-                                        <color key="value" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineSize">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="handleShadowSize">
-                                        <size key="value" width="2" height="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="handleTint">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="handleShadowTint">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="j75-Tr-nxG" firstAttribute="leading" secondItem="cVQ-Le-LfD" secondAttribute="leading" id="1YM-vV-c3D"/>
                             <constraint firstItem="j75-Tr-nxG" firstAttribute="top" secondItem="8Jc-JU-BfU" secondAttribute="bottom" constant="98" id="1g5-Hr-4Z9"/>
-                            <constraint firstAttribute="trailing" secondItem="x2G-DC-5kS" secondAttribute="trailing" id="RQr-xJ-84l"/>
-                            <constraint firstItem="x2G-DC-5kS" firstAttribute="top" secondItem="j75-Tr-nxG" secondAttribute="bottom" constant="36" id="U82-TW-1J6"/>
                             <constraint firstAttribute="trailing" secondItem="j75-Tr-nxG" secondAttribute="trailing" id="cB5-kN-mYn"/>
-                            <constraint firstItem="x2G-DC-5kS" firstAttribute="leading" secondItem="cVQ-Le-LfD" secondAttribute="leading" id="gIH-FI-iWx"/>
                             <constraint firstItem="j75-Tr-nxG" firstAttribute="top" secondItem="OhJ-Mi-NA6" secondAttribute="bottom" constant="1" id="klM-Nx-eHv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OhJ-Mi-NA6" secondAttribute="trailing" constant="10" id="mCa-yP-JwP"/>
                             <constraint firstItem="OhJ-Mi-NA6" firstAttribute="leading" secondItem="cVQ-Le-LfD" secondAttribute="leadingMargin" constant="10" id="p6f-UC-VgO"/>

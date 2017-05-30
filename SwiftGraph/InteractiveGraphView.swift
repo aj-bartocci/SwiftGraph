@@ -18,6 +18,7 @@ class InteractiveGraphView: UIView {
     
     @IBOutlet weak var graph: GraphView!
     @IBOutlet weak var graphSlider: UISlider?
+    @IBOutlet weak var custSlider: CustomSlider?
     var slider: UISlider!
     weak var delegate: InteractiveGraphViewDelegate?
     
@@ -37,6 +38,7 @@ class InteractiveGraphView: UIView {
     func reloadData() {
         graph.reloadData()
         slider.maximumValue = Float(graph.points.count-1)
+        custSlider?.maxValue = CGFloat(graph.points.count-1)
     }
     
     @IBAction func handleSlideEvent(sender: UISlider) {
@@ -48,6 +50,10 @@ class InteractiveGraphView: UIView {
             }
             slider.setValue(Float(prevSliderVal), animated: true)
         }
+    }
+    
+    @IBAction func handleCustSlideEvent(sender: CustomSlider) {
+        sliderValueChanged(to: Float(sender.value))
     }
     
     private var prevSliderVal: Int?

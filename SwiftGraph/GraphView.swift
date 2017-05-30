@@ -12,7 +12,7 @@ import UIKit
 class GraphView: UIView {
     
     @IBInspectable var lineColor: UIColor = .black
-    
+    @IBInspectable var lineWidth: CGFloat = 1.0
     
     weak var dataSource: GraphManagerDisplayInterface?
     var graphLine: CAShapeLayer = CAShapeLayer()
@@ -52,6 +52,7 @@ class GraphView: UIView {
         }
         graphLine.removeFromSuperlayer()
         graphLine.path = createLine(using: points).cgPath
+        graphLine.lineWidth = self.lineWidth
         self.layer.addSublayer(graphLine)
     }
     
