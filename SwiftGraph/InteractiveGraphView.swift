@@ -19,6 +19,7 @@ class InteractiveGraphView: UIView {
     @IBOutlet weak var graph: GraphView!
     @IBOutlet weak var graphSlider: UISlider?
     @IBOutlet weak var custSlider: CustomSlider?
+    @IBOutlet weak var armSlider: SliderWithArm?
     var slider: UISlider!
     weak var delegate: InteractiveGraphViewDelegate?
     
@@ -27,8 +28,16 @@ class InteractiveGraphView: UIView {
             slider = graphSlider
         } else {
             slider = UISlider()
-            self.addSubview(slider)
+//            self.addSubview(slider)
         }
+        
+//        let x = custSlider!.relativeValue * custSlider!.offsetWidth
+//        let start = CGPoint(x: x, y: custSlider!.frame.origin.y)
+//        let end = CGPoint(x: x, y: graph.frame.origin.y)
+//        let path = createLine(using: [start, end])
+//        slideArm.path = path.cgPath
+//        slideArm.strokeColor = UIColor.blue.cgColor
+//        self.layer.insertSublayer(slideArm, above: graph.layer)
     }
     
     func setDataSource(_ source: GraphManagerDisplayInterface) {
@@ -39,6 +48,7 @@ class InteractiveGraphView: UIView {
         graph.reloadData()
         slider.maximumValue = Float(graph.points.count-1)
         custSlider?.maxValue = CGFloat(graph.points.count-1)
+        armSlider?.maxValue = CGFloat(graph.points.count-1)
     }
     
     @IBAction func handleSlideEvent(sender: UISlider) {
@@ -56,6 +66,10 @@ class InteractiveGraphView: UIView {
         sliderValueChanged(to: Float(sender.value))
     }
     
+    @IBAction func handleArmSlide(sender: SliderWithArm) {
+        sliderValueChanged(to: Float(sender.value))
+    }
+    
     private var prevSliderVal: Int?
     func sliderValueChanged(to val: Float) {
         let roundVal = Int(val.rounded())
@@ -63,6 +77,18 @@ class InteractiveGraphView: UIView {
             prevSliderVal = roundVal
             delegate?.sliderValueChanged(to: roundVal)
         }
+    }
+    
+    func createLine(using points: [CGPoint]) -> UIBezierPath {
+        let linePath = UIBezierPath()
+        for p in points.enumerated() {
+            if p.offset == 0 {
+                linePath.move(to: p.element)
+            } else {
+                linePath.addLine(to: p.element)
+            }
+        }
+        return linePath
     }
     
     /*

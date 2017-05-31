@@ -17,6 +17,10 @@ class CustomSlider: UIControl {
     @IBInspectable var handleTint: UIColor = .blue
     @IBInspectable var handleShadowSize: CGSize = CGSize.zero
     @IBInspectable var handleShadowTint: UIColor?
+
+//    @IBInspectable var armSize: CGFloat = 0.0
+//    @IBInspectable var armTint: UIColor = .black
+//    @IBInspectable var armWidth: CGFloat = 2
     
     @IBInspectable var minValue: CGFloat = 0.0
     @IBInspectable var maxValue: CGFloat = 1.0
@@ -74,10 +78,21 @@ class CustomSlider: UIControl {
         
         context?.setShadow(offset: handleShadowSize, blur: 3, color: handleShadowTint?.cgColor)
         
-        
         let xVal = self.offsetWidth * self.relativeValue
         let yVal = midY-handleRadius
         let handleCenter = CGPoint(x: xVal, y: yVal)
+        
+//        if armSize > 0 {
+//            let armStart = CGPoint(x: handleCenter.x+handleRadius, y: handleCenter.y)
+//            let armEnd = CGPoint(x: handleCenter.x+handleRadius, y: -armSize)
+//            context?.move(to: armStart)
+//            context?.addLine(to: armEnd)
+//            context?.setLineWidth(armWidth)
+//            context?.setStrokeColor(armTint.cgColor)
+//            context?.setFillColor(UIColor.clear.cgColor)
+//            context?.drawPath(using: .stroke)
+//            context?.saveGState()   
+//        }
         
         handleTint.set()
         context?.fillEllipse(in:CGRect(origin: handleCenter, size: CGSize(width: handleSize, height: handleSize)))

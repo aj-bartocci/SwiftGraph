@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D17780F1EDF06CB00E1DA02 /* SliderWithArm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D17780E1EDF06CB00E1DA02 /* SliderWithArm.swift */; };
 		1D60198F1ED73B4B003067E2 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60198E1ED73B4B003067E2 /* ViewControllerTests.swift */; };
 		1D6019911ED7405F003067E2 /* InteractiveGraphViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6019901ED7405F003067E2 /* InteractiveGraphViewTests.swift */; };
 		1D6019931ED74116003067E2 /* InteractiveGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6019921ED74116003067E2 /* InteractiveGraphView.swift */; };
@@ -14,6 +15,11 @@
 		1DD895E51ED7614200DE9C1B /* GraphViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD895E41ED7614200DE9C1B /* GraphViewControllerTests.swift */; };
 		1DD895E71ED7846900DE9C1B /* CustomSliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD895E61ED7846900DE9C1B /* CustomSliderTests.swift */; };
 		1DD895E91ED784BB00DE9C1B /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD895E81ED784BB00DE9C1B /* CustomSlider.swift */; };
+		1DDC1EB81EDF30E500810F6A /* SliderWithArmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC1EB71EDF30E500810F6A /* SliderWithArmTests.swift */; };
+		1DDC1EBA1EDF48E800810F6A /* StartEndGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC1EB91EDF48E800810F6A /* StartEndGraphView.swift */; };
+		1DDC1EBC1EDF48F400810F6A /* StartEndGraphViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC1EBB1EDF48F400810F6A /* StartEndGraphViewTests.swift */; };
+		1DDC1EBE1EDF5A7600810F6A /* StartEndGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC1EBD1EDF5A7600810F6A /* StartEndGraphViewController.swift */; };
+		1DDC1EC01EDF5A8500810F6A /* StartEndGraphViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC1EBF1EDF5A8500810F6A /* StartEndGraphViewControllerTests.swift */; };
 		210E8C691ED6521B001F1367 /* GraphViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E8C681ED6521B001F1367 /* GraphViewTests.swift */; };
 		210E8C6B1ED652BC001F1367 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210E8C6A1ED652BC001F1367 /* GraphView.swift */; };
 		217E43681ED7125C00C0A9A9 /* GraphItemInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217E43671ED7125C00C0A9A9 /* GraphItemInterface.swift */; };
@@ -47,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D17780E1EDF06CB00E1DA02 /* SliderWithArm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderWithArm.swift; sourceTree = "<group>"; };
 		1D60198E1ED73B4B003067E2 /* ViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
 		1D6019901ED7405F003067E2 /* InteractiveGraphViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InteractiveGraphViewTests.swift; path = SwiftGraphTests/InteractiveGraphViewTests.swift; sourceTree = SOURCE_ROOT; };
 		1D6019921ED74116003067E2 /* InteractiveGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveGraphView.swift; sourceTree = "<group>"; };
@@ -54,6 +61,11 @@
 		1DD895E41ED7614200DE9C1B /* GraphViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphViewControllerTests.swift; path = ../GraphViewControllerTests.swift; sourceTree = "<group>"; };
 		1DD895E61ED7846900DE9C1B /* CustomSliderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderTests.swift; sourceTree = "<group>"; };
 		1DD895E81ED784BB00DE9C1B /* CustomSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		1DDC1EB71EDF30E500810F6A /* SliderWithArmTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderWithArmTests.swift; sourceTree = "<group>"; };
+		1DDC1EB91EDF48E800810F6A /* StartEndGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartEndGraphView.swift; sourceTree = "<group>"; };
+		1DDC1EBB1EDF48F400810F6A /* StartEndGraphViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartEndGraphViewTests.swift; sourceTree = "<group>"; };
+		1DDC1EBD1EDF5A7600810F6A /* StartEndGraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartEndGraphViewController.swift; sourceTree = "<group>"; };
+		1DDC1EBF1EDF5A8500810F6A /* StartEndGraphViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartEndGraphViewControllerTests.swift; sourceTree = "<group>"; };
 		210E8C681ED6521B001F1367 /* GraphViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewTests.swift; sourceTree = "<group>"; };
 		210E8C6A1ED652BC001F1367 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		217E43671ED7125C00C0A9A9 /* GraphItemInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphItemInterface.swift; sourceTree = "<group>"; };
@@ -126,6 +138,7 @@
 				217E43671ED7125C00C0A9A9 /* GraphItemInterface.swift */,
 				21D159611EB94877002690D4 /* AppDelegate.swift */,
 				21D159631EB94877002690D4 /* ViewController.swift */,
+				1DDC1EBD1EDF5A7600810F6A /* StartEndGraphViewController.swift */,
 				1D60199A1ED75AB4003067E2 /* GraphViewController.swift */,
 				21D159991EB94BE2002690D4 /* GraphItem.swift */,
 				21D159951EB94A20002690D4 /* GraphManager.swift */,
@@ -136,6 +149,8 @@
 				21D1596D1EB94877002690D4 /* Info.plist */,
 				1D6019921ED74116003067E2 /* InteractiveGraphView.swift */,
 				1DD895E81ED784BB00DE9C1B /* CustomSlider.swift */,
+				1D17780E1EDF06CB00E1DA02 /* SliderWithArm.swift */,
+				1DDC1EB91EDF48E800810F6A /* StartEndGraphView.swift */,
 			);
 			path = SwiftGraph;
 			sourceTree = "<group>";
@@ -151,6 +166,9 @@
 				1D60198E1ED73B4B003067E2 /* ViewControllerTests.swift */,
 				1DD895E41ED7614200DE9C1B /* GraphViewControllerTests.swift */,
 				1DD895E61ED7846900DE9C1B /* CustomSliderTests.swift */,
+				1DDC1EB71EDF30E500810F6A /* SliderWithArmTests.swift */,
+				1DDC1EBB1EDF48F400810F6A /* StartEndGraphViewTests.swift */,
+				1DDC1EBF1EDF5A8500810F6A /* StartEndGraphViewControllerTests.swift */,
 			);
 			path = SwiftGraphTests;
 			sourceTree = "<group>";
@@ -304,13 +322,16 @@
 			files = (
 				21D159641EB94877002690D4 /* ViewController.swift in Sources */,
 				1DD895E91ED784BB00DE9C1B /* CustomSlider.swift in Sources */,
+				1DDC1EBE1EDF5A7600810F6A /* StartEndGraphViewController.swift in Sources */,
 				1D6019931ED74116003067E2 /* InteractiveGraphView.swift in Sources */,
 				217E43681ED7125C00C0A9A9 /* GraphItemInterface.swift in Sources */,
 				21D159621EB94877002690D4 /* AppDelegate.swift in Sources */,
 				21D159961EB94A20002690D4 /* GraphManager.swift in Sources */,
+				1DDC1EBA1EDF48E800810F6A /* StartEndGraphView.swift in Sources */,
 				1D60199B1ED75AB4003067E2 /* GraphViewController.swift in Sources */,
 				21D1599A1EB94BE2002690D4 /* GraphItem.swift in Sources */,
 				210E8C6B1ED652BC001F1367 /* GraphView.swift in Sources */,
+				1D17780F1EDF06CB00E1DA02 /* SliderWithArm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,11 +339,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DDC1EC01EDF5A8500810F6A /* StartEndGraphViewControllerTests.swift in Sources */,
+				1DDC1EBC1EDF48F400810F6A /* StartEndGraphViewTests.swift in Sources */,
 				210E8C691ED6521B001F1367 /* GraphViewTests.swift in Sources */,
 				21D159941EB949E9002690D4 /* GraphManagerTests.swift in Sources */,
 				1DD895E71ED7846900DE9C1B /* CustomSliderTests.swift in Sources */,
 				1D60198F1ED73B4B003067E2 /* ViewControllerTests.swift in Sources */,
 				21D159981EB94B98002690D4 /* GraphItemTests.swift in Sources */,
+				1DDC1EB81EDF30E500810F6A /* SliderWithArmTests.swift in Sources */,
 				1D6019911ED7405F003067E2 /* InteractiveGraphViewTests.swift in Sources */,
 				1DD895E51ED7614200DE9C1B /* GraphViewControllerTests.swift in Sources */,
 			);

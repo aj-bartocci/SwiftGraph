@@ -13,6 +13,7 @@ class GraphViewController: UIViewController {
     @IBOutlet weak var graphView: InteractiveGraphView!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var descriptorLabel: UILabel!
+    @IBOutlet weak var sliderLabel: UILabel!
     var graphDataSource = GraphManager()
 
     override func viewDidLoad() {
@@ -46,6 +47,12 @@ class GraphViewController: UIViewController {
         
         print("vc bounds = \(self.view.bounds.width)")
     }
+    
+    func sliderValueChanged(sender: SliderWithArm) {
+        
+        
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -64,6 +71,7 @@ extension GraphViewController: InteractiveGraphViewDelegate {
         
         let item = graphDataSource.items[value]
         valueLabel.text = "\(item.graphValue)"
-        descriptorLabel.text = item.graphDescriptor
+        descriptorLabel.text = "\(item.graphValue)"
+        graphView.armSlider?.label?.text = item.graphDescriptor
     }
 }
