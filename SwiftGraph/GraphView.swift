@@ -30,13 +30,13 @@ class GraphView: UIView {
     */
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         self.reloadData()
     }
     
     override func awakeFromNib() {
-        graphLine.fillColor = nil
-        graphLine.strokeColor = lineColor.cgColor
-        graphLine.opacity = 1.0
+        super.awakeFromNib()
+        setupGraphLine()
     }
     
     func reloadData() {
@@ -52,8 +52,15 @@ class GraphView: UIView {
         }
         graphLine.removeFromSuperlayer()
         graphLine.path = createLine(using: points).cgPath
-        graphLine.lineWidth = self.lineWidth
+        setupGraphLine()
         self.layer.addSublayer(graphLine)
+    }
+    
+    func setupGraphLine() {
+        graphLine.lineWidth = self.lineWidth
+        graphLine.fillColor = nil
+        graphLine.strokeColor = lineColor.cgColor
+        graphLine.opacity = 1.0
     }
     
     func getRelativeYValue(for item: GraphItemInterface) -> CGFloat {

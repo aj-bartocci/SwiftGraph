@@ -8,15 +8,23 @@
 
 import UIKit
 
+protocol StartEndGraphViewDelegate: class {
+    func startEndGraph(view: StartEndGraphView, changedStart value: Float)
+    func startEndGraph(view: StartEndGraphView, changedEnd value: Float)
+}
+
 @IBDesignable
 class StartEndGraphView: UIView {
     
-    let startSlider = SliderWithArm()
-    let endSlider = SliderWithArm()
+    let startSlider = SimpleSlider()
+    let endSlider = SimpleSlider()
     let graph = GraphView()
+    let slideShader = CAShapeLayer()
+    weak var delegate: StartEndGraphViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        // TODO: set default values here if init programmatically
         setup()
     }
     
@@ -31,26 +39,52 @@ class StartEndGraphView: UIView {
 
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
+        
         setup()
+        let graphDataSource = GraphManager()
+        let item1 = GraphItem(value: 100, descriptor: "June 1, 2017")
+        let item2 = GraphItem(value: 50, descriptor: "June 2, 2017")
+        let item3 = GraphItem(value: 33, descriptor: "June 3, 2017")
+        let item4 = GraphItem(value: 65.5, descriptor: "June 4, 2017")
+        
+        graphDataSource.setItems([item1, item2, item3, item4])
+        setDataSource(graphDataSource)
+        graph.reloadData()
+        
+        maximumValue = Float(graphDataSource.items.count-1)
+        minimumValue = 0
+        startSlider.setValue(1, animated: false)
+        endSlider.setValue(2, animated: false)
+        self.layer.addSublayer(slideShader)
+        updateSlideShader()
+//        slideShaderTint = .lightGray
+//        slideShaderOpacity = 0.25
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         resizeStartSlider()
         resizeEndSlider()
+        resizeGraph()
     }
     
     func setup() {
         setupStartSlider()
         setupEndSlider()
+        setupGraph()
+    }
+    
+    func setupGraph() {
+        resizeGraph()
+        self.addSubview(graph)
     }
     
     // MARK: Setup Start Slider
     func setupStartSlider() {
         resizeStartSlider()
         startSlider.backgroundColor = .clear
-        self.addSubview(startSlider)
-        
         startSlider.addTarget(self, action: #selector(handleStartSliderEvent(sender:)), for: .valueChanged)
+        self.addSubview(startSlider)
     }
     
     // MARK: Setup End Slider
@@ -74,35 +108,79 @@ class StartEndGraphView: UIView {
         endSlider.frame = endFrame
     }
     
+    func resizeGraph() {
+        let startOffset = startSlider.handleSize * 0.5
+//        let endOffset = endSlider.handleSize * 0.5
+        let height = self.bounds.height - (startSlider.frame.height + endSlider.frame.height)
+        let width = self.bounds.width - startSlider.handleSize
+        graph.frame = CGRect(x: startOffset, y: endSlider.frame.height, width: width, height: height)
+//        graph.layoutSubviews()
+        graph.reloadData()
+    }
+    
     private var endSticking = false
-    func handleStartSliderEvent(sender: SliderWithArm) {
+    func handleStartSliderEvent(sender: SimpleSlider) {
         
+        delegate?.startEndGraph(view: self, changedStart: Float(sender.value))
+        updateSlideShader()
         if sender.movement == .right {
             if endSticking {
                 endSlider.setValue(sender.value, animated: false)
+                delegate?.startEndGraph(view: self, changedEnd: Float(sender.value))
             } else if sender.value > endSlider.value {
                 endSlider.setValue(sender.value, animated: false)
+                delegate?.startEndGraph(view: self, changedEnd: Float(sender.value))
                 endSticking = true
+                slideShader.removeFromSuperlayer()
             }
         } else if sender.movement == .left {
             if endSticking {
                 endSlider.setValue(sender.value, animated: false)
+                delegate?.startEndGraph(view: self, changedEnd: Float(sender.value))
+            } else {
+                addSlideShaderIfNeeded()
             }
         }
     }
     
-    func handleEndSliderEvent(sender: SliderWithArm) {
+    func handleEndSliderEvent(sender: SimpleSlider) {
         
+        delegate?.startEndGraph(view: self, changedEnd: Float(sender.value))
         if sender.movement == .right {
             endSticking = false
+            addSlideShaderIfNeeded()
+            updateSlideShader()
         } else {
             if sender.value <= startSlider.value {
                 sender.setValue(startSlider.value, animated: false)
                 sender.endEditing(true)
+                slideShader.removeFromSuperlayer()
 //                startSlider.setValue(sender.value, animated: false)
 //                endSticking = true
+            } else {
+                updateSlideShader()
             }
         }
+    }
+    
+    func addSlideShaderIfNeeded() {
+        guard let layers = self.layer.sublayers else {
+            return
+        }
+        if !layers.contains(slideShader) {
+            self.layer.addSublayer(slideShader)
+        }
+    }
+    
+    func updateSlideShader() {
+        let width = endSlider.handleCenterX - startSlider.handleCenterX
+        let rect = CGRect(x: startSlider.handleCenterX, y: graph.frame.origin.y, width: width, height: graph.bounds.height)
+        let path = UIBezierPath(rect: rect)
+        slideShader.path = path.cgPath
+    }
+    
+    func setDataSource(_ dataSource: GraphManagerDisplayInterface) {
+        graph.dataSource = dataSource
     }
     
     /*
@@ -171,6 +249,57 @@ extension StartEndGraphView {
     }
 }
 
+//GraphView Properties
+extension StartEndGraphView {
+    @IBInspectable var graphBackgroundColor: UIColor? {
+        get {
+            return graph.backgroundColor
+        }
+        set {
+            graph.backgroundColor = newValue
+        }
+    }
+    @IBInspectable var graphLineTint: UIColor {
+        get {
+            return graph.lineColor
+        }
+        set {
+            graph.lineColor = newValue
+        }
+    }
+    @IBInspectable var graphLineWidth: CGFloat {
+        get {
+            return graph.lineWidth
+        }
+        set {
+            graph.lineWidth = newValue
+        }
+    }
+}
+
+// SlideShader Properties
+extension StartEndGraphView {
+    @IBInspectable var slideShaderTint: UIColor {
+        get{
+            if let cgCol = slideShader.fillColor {
+                return UIColor(cgColor: cgCol)
+            }
+            return UIColor.lightGray
+        }
+        set {
+            slideShader.fillColor = newValue.cgColor
+        }
+    }
+    @IBInspectable var slideShaderOpacity: Float {
+        get {
+            return slideShader.opacity
+        }
+        set {
+            slideShader.opacity = newValue
+        }
+    }
+}
+
 // Shared Properties 
 extension StartEndGraphView {
     var minimumValue: Float {
@@ -189,13 +318,38 @@ extension StartEndGraphView {
     var maximumValue: Float {
         get {
             if startSlider.maxValue != endSlider.maxValue {
-                endSlider.maxValue = endSlider.maxValue
+                endSlider.maxValue = startSlider.maxValue
             }
             return Float(startSlider.maxValue)
         }
         set {
             let new = CGFloat(newValue)
             startSlider.maxValue = new
+            endSlider.maxValue = new
         }
     }
+//    @IBInspectable var sliderArmTint: UIColor {
+//        get {
+//            if startSlider.armTint != endSlider.armTint {
+//                endSlider.armTint = startSlider.armTint
+//            }
+//            return startSlider.armTint
+//        }
+//        set {
+//            startSlider.armTint = newValue
+//            endSlider.armTint = newValue
+//        }
+//    }
+//    @IBInspectable var sliderArmWidth: CGFloat {
+//        get {
+//            if startSlider.armWidth != endSlider.armWidth {
+//                endSlider.armWidth = startSlider.armWidth
+//            }
+//            return startSlider.armWidth
+//        }
+//        set {
+//            startSlider.armWidth = newValue
+//            endSlider.armWidth = newValue
+//        }
+//    }
 }

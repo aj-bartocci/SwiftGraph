@@ -154,7 +154,6 @@ class SliderWithArm: UIControl {
         
         if isContinous {
             setValue(using: touch)
-            self.sendActions(for: .valueChanged)
         }
         
         return isContinous
@@ -168,7 +167,6 @@ class SliderWithArm: UIControl {
             return
         }
         setValue(using: touch)
-        self.sendActions(for: .valueChanged)
         // set for quick swipes out of bounds
         label?.center.x = labelCenterX
     }
@@ -182,6 +180,7 @@ class SliderWithArm: UIControl {
         let offset = minValue + maxValue
         let newVal = offset * relativeVal
         updateValue(newVal)
+        self.sendActions(for: .valueChanged)
     }
     
     func setValue(_ newVal: CGFloat, animated: Bool) {
