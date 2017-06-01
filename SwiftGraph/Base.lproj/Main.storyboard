@@ -199,6 +199,9 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="endHandleTint">
                                         <color key="value" red="1" green="0.37021817212113539" blue="0.3243364747006986" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endLineTint">
+                                        <color key="value" red="0.42655369640000002" green="0.475846082" blue="0.4802647531" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

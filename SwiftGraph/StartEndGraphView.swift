@@ -12,18 +12,8 @@ import UIKit
 class StartEndGraphView: UIView {
     
     let startSlider = SliderWithArm()
-    @IBInspectable var startHandleTint: UIColor = .white
-    @IBInspectable var startLineTint: UIColor = .darkGray
-    @IBInspectable var startHandleSize: CGFloat = 20
-    
     let endSlider = SliderWithArm()
-    @IBInspectable var endHandleSize: CGFloat = 20
-    @IBInspectable var endHandleTint: UIColor = .white
-    @IBInspectable var endLineTint: UIColor = .darkGray
-    
-    var minimumValue: Float = 0
-    var maximumValue: Float = 1
-    var currentValue: Float = 0.5
+    let graph = GraphView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,12 +47,6 @@ class StartEndGraphView: UIView {
     // MARK: Setup Start Slider
     func setupStartSlider() {
         resizeStartSlider()
-        startSlider.handleSize = startHandleSize
-        startSlider.handleTint = startHandleTint
-        startSlider.lineTint = startLineTint
-        startSlider.value = CGFloat(currentValue)
-        startSlider.maxValue = CGFloat(maximumValue)
-        startSlider.minValue = CGFloat(minimumValue)
         startSlider.backgroundColor = .clear
         self.addSubview(startSlider)
         
@@ -72,11 +56,6 @@ class StartEndGraphView: UIView {
     // MARK: Setup End Slider
     func setupEndSlider() {
         resizeEndSlider()
-        endSlider.handleTint = endHandleTint
-        endSlider.lineTint = endLineTint
-        endSlider.value = CGFloat(currentValue)
-        endSlider.maxValue = CGFloat(maximumValue)
-        endSlider.minValue = CGFloat(minimumValue)
         endSlider.backgroundColor = .clear
         endSlider.addTarget(self, action: #selector(handleEndSliderEvent(sender:)), for: .valueChanged)
         self.addSubview(endSlider)
@@ -134,4 +113,89 @@ class StartEndGraphView: UIView {
     }
     */
 
+}
+
+// StartSlider Properties
+extension StartEndGraphView {
+    @IBInspectable var startHandleTint: UIColor {
+        get {
+            return startSlider.handleTint
+        }
+        set {
+            startSlider.handleTint = newValue
+        }
+    }
+    @IBInspectable var startLineTint: UIColor {
+        get {
+            return startSlider.lineTint
+        }
+        set {
+            startSlider.lineTint = newValue
+        }
+    }
+    @IBInspectable var startHandleSize: CGFloat {
+        get {
+            return startSlider.handleSize
+        }
+        set {
+            startSlider.handleSize = newValue
+        }
+    }
+}
+
+// EndSlider Properties
+extension StartEndGraphView {
+    @IBInspectable var endHandleSize: CGFloat {
+        get {
+            return endSlider.handleSize
+        }
+        set {
+            endSlider.handleSize = newValue
+        }
+    }
+    @IBInspectable var endHandleTint: UIColor {
+        get {
+            return endSlider.handleTint
+        }
+        set {
+            endSlider.handleTint = newValue
+        }
+    }
+    @IBInspectable var endLineTint: UIColor {
+        get {
+            return endSlider.lineTint
+        }
+        set {
+            endSlider.lineTint = newValue
+        }
+    }
+}
+
+// Shared Properties 
+extension StartEndGraphView {
+    var minimumValue: Float {
+        get {
+            if startSlider.minValue != endSlider.minValue {
+                endSlider.minValue = startSlider.minValue
+            }
+            return Float(startSlider.minValue)
+        }
+        set {
+            let new = CGFloat(newValue)
+            startSlider.minValue = new
+            endSlider.minValue = new
+        }
+    }
+    var maximumValue: Float {
+        get {
+            if startSlider.maxValue != endSlider.maxValue {
+                endSlider.maxValue = endSlider.maxValue
+            }
+            return Float(startSlider.maxValue)
+        }
+        set {
+            let new = CGFloat(newValue)
+            startSlider.maxValue = new
+        }
+    }
 }
