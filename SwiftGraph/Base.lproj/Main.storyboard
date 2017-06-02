@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H3V-Dp-r44">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cIs-8h-YCX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -291,10 +291,10 @@
             </objects>
             <point key="canvasLocation" x="956" y="836.13193403298362"/>
         </scene>
-        <!--View Controller-->
+        <!--Start End Graph Detail View Controller-->
         <scene sceneID="CNk-sj-WJD">
             <objects>
-                <viewController id="cIs-8h-YCX" sceneMemberID="viewController">
+                <viewController id="cIs-8h-YCX" customClass="StartEndGraphDetailViewController" customModule="SwiftGraph" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qe8-N6-LAw"/>
                         <viewControllerLayoutGuide type="bottom" id="G86-9K-ght"/>
@@ -305,7 +305,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZf-BG-S5d" customClass="StartEndDetailGraphView" customModule="SwiftGraph" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="120" width="375" height="300"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="F0v-xw-s0W"/>
                                 </constraints>
@@ -328,6 +328,32 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="slideShaderOpacity">
                                         <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="startLabelSize">
+                                        <size key="value" width="55" height="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="startLabelTitle" value="June 1, 2017"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startLabelColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="endLabelSize">
+                                        <size key="value" width="55" height="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="endLabelTitle" value="June 2, 2017"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endLabelColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startLineTint">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endLineTint">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startSliderArmColor">
+                                        <color key="value" red="0.42655369640000002" green="0.475846082" blue="0.4802647531" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startSliderArmWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -338,6 +364,9 @@
                             <constraint firstItem="bZf-BG-S5d" firstAttribute="leading" secondItem="9FX-eH-F5j" secondAttribute="leading" id="xqH-Cg-RWd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="graphView" destination="bZf-BG-S5d" id="EHm-VN-otq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84x-4Z-2nK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

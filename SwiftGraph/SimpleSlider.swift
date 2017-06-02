@@ -83,6 +83,7 @@ class SimpleSlider: UIControl {
         let context = UIGraphicsGetCurrentContext()
         let handleRadius = handleSize * 0.5
         
+        //TODO: set a bool for full width line or indented 
         let lineStart = CGPoint(x: handleRadius, y: lineYCenter)
         let lineEnd = CGPoint(x: rect.width - handleRadius, y: lineYCenter)
         context?.move(to: lineStart)

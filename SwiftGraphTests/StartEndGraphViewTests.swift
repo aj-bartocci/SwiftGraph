@@ -39,6 +39,44 @@ class StartEndGraphViewTests: XCTestCase {
         XCTAssertEqual(sut.endSlider.minValue, CGFloat(sut.minimumValue))
         XCTAssertEqual(sut.startSlider.minValue, CGFloat(sut.minimumValue))
         XCTAssertNil(sut.delegate)
+        XCTAssertNotNil(sut.startSliderArm)
+        XCTAssertNotNil(sut.endSliderArm)
+    }
+    
+    func test_HandleStartSliderEvent_SetsStartSliderArm_ToStartSliderHandle() {
+        
+        sut.startSlider.setValue(10, animated: false)
+        let endingPoint = CGPoint(x: sut.startSlider.handleCenterX, y: sut.graph.frame.origin.y)
+        sut.handleStartSliderEvent(sender: sut.startSlider)
+        
+        let path = sut.startSliderArm.path!
+        let bez = UIBezierPath(cgPath: path)
+        
+        XCTAssertTrue(bez.contains(endingPoint))
+    }
+    
+    func test_Init_SetEndSliderArm() {
+        let frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+        let sut = StartEndGraphView(frame: frame)
+        XCTAssertNotNil(sut.endSliderArm)
+        XCTAssertNotNil(sut.endSliderArm.path)
+    }
+    
+    func test_Init_SetsStartSliderArm() {
+        let frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+        let sut = StartEndGraphView(frame: frame)
+        XCTAssertNotNil(sut.startSliderArm)
+        XCTAssertNotNil(sut.startSliderArm.path)
+        XCTAssertTrue(sut.layer.sublayers!.contains(sut.startSliderArm))
+        let path = sut.startSliderArm.path!
+        let bez = UIBezierPath(cgPath: path)
+        
+        let startPoint = CGPoint(x: sut.startSlider.handleCenterX, y: sut.startSliderArm.frame.origin.y)
+        let endPoint = CGPoint(x: startPoint.x, y: sut.graph.frame.origin.y)
+        bez.contains(startPoint)
+        bez.contains(endPoint)
+        XCTAssertEqual(sut.startSliderArmColor?.cgColor, sut.startSliderArm.strokeColor)
+        XCTAssertEqual(sut.startSliderArmWidth, sut.startSliderArm.lineWidth)
     }
     
     func test_Init_SetsStartSlider() {
@@ -118,9 +156,21 @@ class StartEndGraphViewTests: XCTestCase {
         let frame = CGRect(x: 10, y: 20, width: 200, height: 300)
         sut.frame = frame
         sut.layoutSubviews()
-        
         let expectedSize = CGSize(width: frame.width-sut.startSlider.handleSize, height: frame.height-(sut.startSlider.frame.height * 2))
         XCTAssertEqual(sut.graph.frame.size, expectedSize)
+    }
+    
+    func test_LayouSubviews_LaysOutStartSliderArm() {
+        let frame = CGRect(x: 10, y: 20, width: 200, height: 300)
+        sut.frame = frame
+        sut.layoutSubviews()
+        
+        let topPoint = CGPoint(x: sut.startSlider.handleCenterX, y: sut.graph.frame.origin.y)
+        let botPoint = CGPoint(x: topPoint.x, y: topPoint.y + sut.graph.frame.height)
+        
+        let bez = UIBezierPath(cgPath: sut.startSliderArm.path!)
+        XCTAssertTrue(bez.contains(topPoint))
+        XCTAssertTrue(bez.contains(botPoint))
     }
     
     func test_StartSlider_Target_EqualsSelf() {

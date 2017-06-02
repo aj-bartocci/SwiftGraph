@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D0DD4091EE1BE33006393F5 /* StartEndGraphDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0DD4081EE1BE33006393F5 /* StartEndGraphDetailViewController.swift */; };
 		1D17780F1EDF06CB00E1DA02 /* SliderWithArm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D17780E1EDF06CB00E1DA02 /* SliderWithArm.swift */; };
 		1D27C5191EE0B1B8008F6CC6 /* SimpleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D27C5181EE0B1B8008F6CC6 /* SimpleSlider.swift */; };
 		1D60198F1ED73B4B003067E2 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60198E1ED73B4B003067E2 /* ViewControllerTests.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D0DD4081EE1BE33006393F5 /* StartEndGraphDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartEndGraphDetailViewController.swift; sourceTree = "<group>"; };
 		1D17780E1EDF06CB00E1DA02 /* SliderWithArm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderWithArm.swift; sourceTree = "<group>"; };
 		1D27C5181EE0B1B8008F6CC6 /* SimpleSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSlider.swift; sourceTree = "<group>"; };
 		1D60198E1ED73B4B003067E2 /* ViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				21D159611EB94877002690D4 /* AppDelegate.swift */,
 				21D159631EB94877002690D4 /* ViewController.swift */,
 				1DDC1EBD1EDF5A7600810F6A /* StartEndGraphViewController.swift */,
+				1D0DD4081EE1BE33006393F5 /* StartEndGraphDetailViewController.swift */,
 				1D60199A1ED75AB4003067E2 /* GraphViewController.swift */,
 				21D159991EB94BE2002690D4 /* GraphItem.swift */,
 				21D159951EB94A20002690D4 /* GraphManager.swift */,
@@ -342,6 +345,7 @@
 				1D60199B1ED75AB4003067E2 /* GraphViewController.swift in Sources */,
 				21D1599A1EB94BE2002690D4 /* GraphItem.swift in Sources */,
 				210E8C6B1ED652BC001F1367 /* GraphView.swift in Sources */,
+				1D0DD4091EE1BE33006393F5 /* StartEndGraphDetailViewController.swift in Sources */,
 				1D17780F1EDF06CB00E1DA02 /* SliderWithArm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

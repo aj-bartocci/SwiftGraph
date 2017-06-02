@@ -20,6 +20,8 @@ class StartEndGraphView: UIView {
     let endSlider = SimpleSlider()
     let graph = GraphView()
     let slideShader = CAShapeLayer()
+    let startSliderArm = CAShapeLayer()
+    let endSliderArm = CAShapeLayer()
     weak var delegate: StartEndGraphViewDelegate?
     
     override init(frame: CGRect) {
@@ -55,7 +57,8 @@ class StartEndGraphView: UIView {
         minimumValue = 0
         startSlider.setValue(1, animated: false)
         endSlider.setValue(2, animated: false)
-        self.layer.addSublayer(slideShader)
+//        self.layer.addSublayer(slideShader)
+        self.layer.insertSublayer(slideShader, below: startSliderArm)
         updateSlideShader()
 //        slideShaderTint = .lightGray
 //        slideShaderOpacity = 0.25
@@ -66,17 +69,32 @@ class StartEndGraphView: UIView {
         resizeStartSlider()
         resizeEndSlider()
         resizeGraph()
+        
+        layoutStartSliderArm()
     }
     
     func setup() {
         setupStartSlider()
         setupEndSlider()
         setupGraph()
+    
+        self.layer.addSublayer(startSliderArm)
+        layoutStartSliderArm()
+    }
+    
+    func layoutStartSliderArm() {
+        let startPoint = CGPoint(x: startSlider.handleCenterX, y: graph.frame.origin.y)
+        let path = UIBezierPath()
+        path.move(to: startPoint)
+        path.addLine(to: CGPoint(x: startPoint.x, y: startPoint.y + graph.frame.height))
+        
+        startSliderArm.path = path.cgPath
     }
     
     func setupGraph() {
         resizeGraph()
-        self.addSubview(graph)
+//        self.addSubview(graph)
+        self.insertSubview(graph, at: 0)
     }
     
     // MARK: Setup Start Slider
@@ -123,6 +141,7 @@ class StartEndGraphView: UIView {
         
         delegate?.startEndGraph(view: self, changedStart: Float(sender.value))
         updateSlideShader()
+        layoutStartSliderArm()
         if sender.movement == .right {
             if endSticking {
                 endSlider.setValue(sender.value, animated: false)
@@ -168,7 +187,8 @@ class StartEndGraphView: UIView {
             return
         }
         if !layers.contains(slideShader) {
-            self.layer.addSublayer(slideShader)
+//            self.layer.addSublayer(slideShader)
+            self.layer.insertSublayer(slideShader, below: startSliderArm)
         }
     }
     
@@ -296,6 +316,32 @@ extension StartEndGraphView {
         }
         set {
             slideShader.opacity = newValue
+        }
+    }
+}
+
+extension StartEndGraphView {
+    @IBInspectable var startSliderArmColor: UIColor? {
+        get {
+            if let cgCol = startSliderArm.strokeColor {
+                return UIColor(cgColor: cgCol)
+            }
+            return nil
+        }
+        set {
+            if let newValue = newValue {
+                startSliderArm.strokeColor = newValue.cgColor
+            } else {
+                startSliderArm.strokeColor = nil
+            }
+        }
+    }
+    @IBInspectable var startSliderArmWidth: CGFloat {
+        get {
+            return startSliderArm.lineWidth
+        }
+        set {
+            startSliderArm.lineWidth = newValue
         }
     }
 }
