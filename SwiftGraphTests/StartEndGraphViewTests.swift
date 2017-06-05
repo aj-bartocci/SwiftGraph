@@ -55,6 +55,30 @@ class StartEndGraphViewTests: XCTestCase {
         XCTAssertTrue(bez.contains(endingPoint))
     }
     
+    func test_HandleStartSliderEvent_SetsStickingEndSliderArm_ToStartSliderHandle() {
+        
+        sut.startSlider.setValue(10, animated: false)
+        let endingPoint = CGPoint(x: sut.startSlider.handleCenterX, y: sut.graph.frame.origin.y)
+        sut.handleStartSliderEvent(sender: sut.startSlider)
+        
+        let path = sut.endSliderArm.path!
+        let bez = UIBezierPath(cgPath: path)
+        
+        XCTAssertTrue(bez.contains(endingPoint))
+    }
+    
+    func test_HandleEndSliderEvent_SetsEndSliderArm_ToEndSliderHandle() {
+        
+        sut.endSlider.setValue(10, animated: false)
+        let endPoint = CGPoint(x: sut.endSlider.handleCenterX, y: sut.graph.frame.origin.y)
+        sut.handleEndSliderEvent(sender: sut.endSlider)
+        
+        let path = sut.endSliderArm.path!
+        let bez = UIBezierPath(cgPath: path)
+        
+        XCTAssertTrue(bez.contains(endPoint))
+    }
+    
     func test_Init_SetEndSliderArm() {
         let frame = CGRect(x: 0, y: 0, width: 400, height: 400)
         let sut = StartEndGraphView(frame: frame)
@@ -181,6 +205,18 @@ class StartEndGraphViewTests: XCTestCase {
         let bez = UIBezierPath(cgPath: sut.startSliderArm.path!)
         XCTAssertTrue(bez.contains(topPoint))
         XCTAssertTrue(bez.contains(botPoint))
+    }
+    
+    func test_LayoutSubviews_LaysOutEndSliderArm() {
+        let frame = CGRect(x: 10, y: 20, width: 200, height: 300)
+        sut.frame = frame
+        sut.layoutSubviews()
+        
+        let top = CGPoint(x: sut.endSlider.handleCenterX, y: sut.graph.frame.origin.y)
+        let bot = CGPoint(x: top.x, y: top.y + sut.graph.frame.height)
+        let bez = UIBezierPath(cgPath: sut.endSliderArm.path!)
+        XCTAssertTrue(bez.contains(top))
+        XCTAssertTrue(bez.contains(bot))
     }
     
     func test_StartSlider_Target_EqualsSelf() {

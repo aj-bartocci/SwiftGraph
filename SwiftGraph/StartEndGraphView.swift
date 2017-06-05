@@ -58,7 +58,7 @@ class StartEndGraphView: UIView {
         startSlider.setValue(1, animated: false)
         endSlider.setValue(2, animated: false)
 //        self.layer.addSublayer(slideShader)
-        self.layer.insertSublayer(slideShader, below: startSliderArm)
+        self.layer.insertSublayer(slideShader, below: endSliderArm)
         updateSlideShader()
 //        slideShaderTint = .lightGray
 //        slideShaderOpacity = 0.25
@@ -71,6 +71,7 @@ class StartEndGraphView: UIView {
         resizeGraph()
         
         layoutStartSliderArm()
+        layoutEndSliderArm()
     }
     
     func setup() {
@@ -156,6 +157,7 @@ class StartEndGraphView: UIView {
         delegate?.startEndGraph(view: self, changedStart: Float(sender.value))
         updateSlideShader()
         layoutStartSliderArm()
+        layoutEndSliderArm()
         if sender.movement == .right {
             if endSticking {
                 endSlider.setValue(sender.value, animated: false)
@@ -179,6 +181,7 @@ class StartEndGraphView: UIView {
     func handleEndSliderEvent(sender: SimpleSlider) {
         
         delegate?.startEndGraph(view: self, changedEnd: Float(sender.value))
+        layoutEndSliderArm()
         if sender.movement == .right {
             endSticking = false
             addSlideShaderIfNeeded()
@@ -202,7 +205,7 @@ class StartEndGraphView: UIView {
         }
         if !layers.contains(slideShader) {
 //            self.layer.addSublayer(slideShader)
-            self.layer.insertSublayer(slideShader, below: startSliderArm)
+            self.layer.insertSublayer(slideShader, below: endSliderArm)
         }
     }
     
