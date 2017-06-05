@@ -58,7 +58,7 @@ class StartEndGraphView: UIView {
         startSlider.setValue(1, animated: false)
         endSlider.setValue(2, animated: false)
 //        self.layer.addSublayer(slideShader)
-        self.layer.insertSublayer(slideShader, below: endSliderArm)
+        self.layer.insertSublayer(slideShader, below: startSliderArm)
         updateSlideShader()
 //        slideShaderTint = .lightGray
 //        slideShaderOpacity = 0.25
@@ -157,13 +157,14 @@ class StartEndGraphView: UIView {
         delegate?.startEndGraph(view: self, changedStart: Float(sender.value))
         updateSlideShader()
         layoutStartSliderArm()
-        layoutEndSliderArm()
         if sender.movement == .right {
             if endSticking {
                 endSlider.setValue(sender.value, animated: false)
+                layoutEndSliderArm()
                 delegate?.startEndGraph(view: self, changedEnd: Float(sender.value))
             } else if sender.value > endSlider.value {
                 endSlider.setValue(sender.value, animated: false)
+                layoutEndSliderArm()
                 delegate?.startEndGraph(view: self, changedEnd: Float(sender.value))
                 endSticking = true
                 slideShader.removeFromSuperlayer()
@@ -171,6 +172,7 @@ class StartEndGraphView: UIView {
         } else if sender.movement == .left {
             if endSticking {
                 endSlider.setValue(sender.value, animated: false)
+                layoutEndSliderArm()
                 delegate?.startEndGraph(view: self, changedEnd: Float(sender.value))
             } else {
                 addSlideShaderIfNeeded()
@@ -205,7 +207,7 @@ class StartEndGraphView: UIView {
         }
         if !layers.contains(slideShader) {
 //            self.layer.addSublayer(slideShader)
-            self.layer.insertSublayer(slideShader, below: endSliderArm)
+            self.layer.insertSublayer(slideShader, below: startSliderArm)
         }
     }
     
