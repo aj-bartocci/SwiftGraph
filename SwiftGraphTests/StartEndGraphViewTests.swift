@@ -60,6 +60,16 @@ class StartEndGraphViewTests: XCTestCase {
         let sut = StartEndGraphView(frame: frame)
         XCTAssertNotNil(sut.endSliderArm)
         XCTAssertNotNil(sut.endSliderArm.path)
+        XCTAssertTrue(sut.layer.sublayers!.contains(sut.endSliderArm))
+        let path = sut.endSliderArm.path!
+        let bez = UIBezierPath(cgPath: path)
+        
+        let startPoint = CGPoint(x: sut.endSlider.handleCenterX, y: sut.graph.frame.origin.y)
+        let endPoint = CGPoint(x: startPoint.x, y: startPoint.y + sut.graph.frame.height)
+        XCTAssertTrue(bez.contains(startPoint))
+        XCTAssertTrue(bez.contains(endPoint))
+        XCTAssertEqual(sut.endSliderArmColor?.cgColor, sut.endSliderArm.strokeColor)
+        XCTAssertEqual(sut.endSliderArmWidth, sut.endSliderArm.lineWidth)
     }
     
     func test_Init_SetsStartSliderArm() {
@@ -71,10 +81,10 @@ class StartEndGraphViewTests: XCTestCase {
         let path = sut.startSliderArm.path!
         let bez = UIBezierPath(cgPath: path)
         
-        let startPoint = CGPoint(x: sut.startSlider.handleCenterX, y: sut.startSliderArm.frame.origin.y)
-        let endPoint = CGPoint(x: startPoint.x, y: sut.graph.frame.origin.y)
-        bez.contains(startPoint)
-        bez.contains(endPoint)
+        let startPoint = CGPoint(x: sut.startSlider.handleCenterX, y: sut.graph.frame.origin.y)
+        let endPoint = CGPoint(x: startPoint.x, y: startPoint.y + sut.graph.frame.size.height)
+        XCTAssertTrue(bez.contains(startPoint))
+        XCTAssertTrue(bez.contains(endPoint))
         XCTAssertEqual(sut.startSliderArmColor?.cgColor, sut.startSliderArm.strokeColor)
         XCTAssertEqual(sut.startSliderArmWidth, sut.startSliderArm.lineWidth)
     }

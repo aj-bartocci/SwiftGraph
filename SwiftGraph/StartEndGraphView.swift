@@ -80,6 +80,9 @@ class StartEndGraphView: UIView {
     
         self.layer.addSublayer(startSliderArm)
         layoutStartSliderArm()
+        
+        self.layer.addSublayer(endSliderArm)
+        layoutEndSliderArm()
     }
     
     func layoutStartSliderArm() {
@@ -89,6 +92,17 @@ class StartEndGraphView: UIView {
         path.addLine(to: CGPoint(x: startPoint.x, y: startPoint.y + graph.frame.height))
         
         startSliderArm.path = path.cgPath
+    }
+    
+    func layoutEndSliderArm() {
+        
+        let startPoint = CGPoint(x: endSlider.handleCenterX, y: graph.frame.origin.y)
+        let endPoint = CGPoint(x: startPoint.x, y: startPoint.y + graph.frame.height)
+        let path = UIBezierPath()
+        path.move(to: startPoint)
+        path.addLine(to: endPoint)
+        
+        endSliderArm.path = path.cgPath
     }
     
     func setupGraph() {
@@ -329,11 +343,7 @@ extension StartEndGraphView {
             return nil
         }
         set {
-            if let newValue = newValue {
-                startSliderArm.strokeColor = newValue.cgColor
-            } else {
-                startSliderArm.strokeColor = nil
-            }
+            startSliderArm.strokeColor = newValue?.cgColor
         }
     }
     @IBInspectable var startSliderArmWidth: CGFloat {
@@ -342,6 +352,28 @@ extension StartEndGraphView {
         }
         set {
             startSliderArm.lineWidth = newValue
+        }
+    }
+}
+
+extension StartEndGraphView {
+    @IBInspectable var endSliderArmColor: UIColor? {
+        get {
+            if let cgCol = endSliderArm.strokeColor {
+                return UIColor(cgColor: cgCol)
+            }
+            return nil
+        }
+        set {
+            endSliderArm.strokeColor = newValue?.cgColor
+        }
+    }
+    @IBInspectable var endSliderArmWidth: CGFloat {
+        get {
+            return endSliderArm.lineWidth   
+        }
+        set {
+            endSliderArm.lineWidth = newValue
         }
     }
 }
